@@ -1,0 +1,28 @@
+{
+  "name": "team-roster",
+  "version": "1.0.0",
+  "description": "## Purpose As a manager, I want to generate a webpage that displays my team's basic information, so that I have quick access to their emails and GitHub profiles.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rachel8078/team-roster.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rachel8078/team-roster/issues"
+  },
+  "homepage": "https://github.com/Rachel8078/team-roster#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
+}
