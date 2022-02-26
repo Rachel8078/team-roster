@@ -1,6 +1,6 @@
 const inquirer = require('inquirer')
 const generatePage = require('./src/page-template');
-const { writeFile, copyFile } = require('./utils/generate-site');
+const { writeFile, copyFile } = require('./utils/generate-site.js');
 
 const promptUser = () => {
     console.log(`
@@ -50,54 +50,60 @@ const promptPosition = teamData => {
     .prompt([
         {
             type: 'input',
-            name: 'name',
+            name: 'engineer-name',
             message: "What is the engineer's name?",
-            when: ({ position = Engineer }) => addEngineer
+            // when: ({ position = Engineer }) => addEngineer
         },
         {
             type: 'input',
-            name: 'id',
+            name: 'engineer-id',
             message: "What is the engineer's employee ID?",
-            when: ({ position = Engineer }) => addEngineer
+            // when: ({ position = Engineer }) => addEngineer
         },
         {
             type: 'input',
-            name: 'email',
+            name: 'engineer-email',
             message: "What is the engineer's email address?",
-            when: ({ position = Engineer }) => addEngineer
+            // when: ({ position = Engineer }) => addEngineer
         },
         {
             type: 'input',
             name: 'github',
             message: "What is the engineer's GitHub username?",
-            when: ({ position = Engineer }) => addEngineer
+            // when: ({ position = Engineer }) => addEngineer
         },
         {
             type: 'input',
-            name: 'name',
+            name: 'intern-name',
             message: "What is the intern's name?",
-            when: ({ position = Intern }) => addIntern
+            // when: ({ position = Intern }) => addIntern
         },
         {
             type: 'input',
-            name: 'id',
+            name: 'intern-id',
             message: "What is the intern's employee ID?",
-            when: ({ position = Intern }) => addIntern
+            // when: ({ position = Intern }) => addIntern
         },
         {
             type: 'input',
-            name: 'email',
+            name: 'intern-email',
             message: "What is the intern's email address?",
-            when: ({ position = Intern }) => addIntern
+            // when: ({ position = Intern }) => addIntern
         },
         {
             type: 'input',
             name: 'school',
             message: "What is the intern's school?",
-            when: ({ position = Intern }) => addIntern
+           //  when: ({ position = Intern }) => addIntern
         },
     ])   
 }
 
 promptUser()
 .then(promptPosition)
+
+fs.writeFile('index.html', generatePage(name, github), err => {
+    if (err) throw err;
+
+    console.log('Team Roster complete!  Check out index.html to see the output!');
+});
