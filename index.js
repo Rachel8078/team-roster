@@ -67,117 +67,116 @@ const promptUser = () => {
             name: 'position',
             message: "Which employee type would you like to add to the team?",
             choices: ["Engineer", "Intern", "Finished Building Team"],
-        },
+        }
+    ])
+    .then(({ position }) => {
+      if(position === 'Engineer') {
+        addEngineer();
+    } else if(position === 'Intern') {
+        addIntern();
+    } else if(position === 'Finished Building Team') {
+        console.log("Done building team!")
+    }
+  });
+};
+
+const addEngineer = (employeeData) => {
+    console.log(`
+---------------------------
+ Adding Engineer to Roster
+---------------------------
+    `);
+
+    return inquirer
+    .prompt([
         {
             type: 'input',
             name: 'engineer-name',
             message: "What is the engineer's name?",
-            when: ({ position }) => answers.position === "Engineer"
         },
         {
             type: 'input',
             name: 'engineer-id',
             message: "What is the engineer's employee ID?",
-            when: ({ position }) => answers.position === "Engineer"
         },
         {
             type: 'input',
             name: 'engineer-email',
             message: "What is the engineer's email address?",
-            when: ({ position }) => answers.position === "Engineer"
         },
         {
             type: 'input',
             name: 'github',
             message: "What is the engineer's GitHub username?",
-            when: ({ position }) => answers.position === "Engineer"
         },
+        {
+          type: 'list',
+          name: 'position',
+          message: "Which employee type would you like to add to the team?",
+          choices: ["Engineer", "Intern", "Finished Building Team"],
+      }
+  ])
+  .then(({ position }) => {
+    if(position === 'Engineer') {
+      addEngineer();
+  } else if(position === 'Intern') {
+      addIntern();
+  } else if(position === 'Finished Building Team') {
+      console.log("Done building team!")
+  }
+});
+};
+
+const addIntern = (employeeData) => {
+  console.log(`
+---------------------------
+  Adding Intern to Roster
+---------------------------
+  `);
+
+  return inquirer
+  .prompt([
         {
             type: 'input',
             name: 'intern-name',
             message: "What is the intern's name?",
-            when: ({ position }) => answers.position === "Intern"
+            // when: ({ position = Intern }) => addIntern
         },
         {
             type: 'input',
             name: 'intern-id',
             message: "What is the intern's employee ID?",
-            when: ({ position }) => answers.position === "Intern"
+            // when: ({ position = Intern }) => addIntern
         },
         {
             type: 'input',
             name: 'intern-email',
             message: "What is the intern's email address?",
-            when: ({ position }) => answers.position === "Intern"
+            // when: ({ position = Intern }) => addIntern
         },
         {
             type: 'input',
             name: 'school',
             message: "What is the intern's school?",
-            when: ({ position }) => answers.position === "Intern"
+           //  when: ({ position = Intern }) => addIntern
         },
-    ]);
-};
-
-// const promptPosition = teamData => {
-//     console.log(`
-// ---------------------------
-//  Add Team Member to Roster
-// ---------------------------
-//     `);
-
-//     return inquirer
-//     .prompt([
-//         {
-//             type: 'input',
-//             name: 'engineer-name',
-//             message: "What is the engineer's name?",
-//             // when: ({ position = Engineer }) => addEngineer
-//         },
-//         {
-//             type: 'input',
-//             name: 'engineer-id',
-//             message: "What is the engineer's employee ID?",
-//             // when: ({ position = Engineer }) => addEngineer
-//         },
-//         {
-//             type: 'input',
-//             name: 'engineer-email',
-//             message: "What is the engineer's email address?",
-//             // when: ({ position = Engineer }) => addEngineer
-//         },
-//         {
-//             type: 'input',
-//             name: 'github',
-//             message: "What is the engineer's GitHub username?",
-//             // when: ({ position = Engineer }) => addEngineer
-//         },
-//         {
-//             type: 'input',
-//             name: 'intern-name',
-//             message: "What is the intern's name?",
-//             // when: ({ position = Intern }) => addIntern
-//         },
-//         {
-//             type: 'input',
-//             name: 'intern-id',
-//             message: "What is the intern's employee ID?",
-//             // when: ({ position = Intern }) => addIntern
-//         },
-//         {
-//             type: 'input',
-//             name: 'intern-email',
-//             message: "What is the intern's email address?",
-//             // when: ({ position = Intern }) => addIntern
-//         },
-//         {
-//             type: 'input',
-//             name: 'school',
-//             message: "What is the intern's school?",
-//            //  when: ({ position = Intern }) => addIntern
-//         },
-//     ])   
-// }
+        {
+          type: 'list',
+          name: 'position',
+          message: "Which employee type would you like to add to the team?",
+          choices: ["Engineer", "Intern", "Finished Building Team"],
+        }
+    ]) 
+    .then(({ position }) => {
+      if(position === 'Engineer') {
+        addEngineer();
+    } else if(position === 'Intern') {
+        addIntern();
+    } else if(position === 'Finished Building Team') {
+        console.log("Done building team!")
+    }
+  });  
+}
 
 
 // function call to begin app
