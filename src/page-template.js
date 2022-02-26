@@ -1,55 +1,56 @@
-// create the engineer card    
-const generateEngineer = engineerInfo => {
-    // if no engineer return nothing
-    if (!engineerInfo) {
-        return '';
-    }
+// // create the engineer card    
+// const generateEngineer = engineerInfo => {
+//     // if no engineer return nothing
+//     if (!engineerInfo) {
+//         return '';
+//     }
 
-    // if YES engineer, include info:
-    return `
-    <section class="col">
-        <div class="card h-100">
-         <div class="card-header">
-            <h1 class="card-title">${name}</h1>
-            <h2 class="card-subtitle">Engineer</h2>
-         </div>  
-         <div class="card-body">
-            <p id="id-number">ID: ${id}</p>
-            <p id="email">Email: <a href="mailto:${email}">${email}</a></p>
-            <p id="github">Github: <a href="https://github.com/${github}">${github}</a></p>
-         </div>
-        </div>
-    </section>
-    `;
-};
+//     // if YES engineer, include info:
+//     return `
+//     <section class="col">
+//         <div class="card h-100">
+//          <div class="card-header">
+//             <h1 class="card-title">${engineerName}</h1>
+//             <h2 class="card-subtitle">Engineer</h2>
+//          </div>  
+//          <div class="card-body">
+//             <p id="id-number">ID: ${engineerId}</p>
+//             <p id="email">Email: <a href="mailto:${email}">${engineerEmail}</a></p>
+//             <p id="github">Github: <a href="https://github.com/${github}">${github}</a></p>
+//          </div>
+//         </div>
+//     </section>
+//     `;
+// };
 
-// create an intern card
-const generateIntern = internInfo => {
-    if (!internInfo) {
-        return '';
-    }
+// // create an intern card
+// const generateIntern = internInfo => {
+//     if (!internInfo) {
+//         return '';
+//     }
 
-    return `
-    <section class="col">
-        <div class="card h-100">
-            <div class="card-header">
-             <h1 class="card-title">${name}</h1>
-             <h2 class="card-subtitle">Intern</h2>
-            </div>
-            <div class="card-body">
-             <p id="id-number">ID: ${id}</p>
-             <p id="email">Email: <a href="mailto:${email}">${email}</a></p>
-              <p id="school">School: ${school}</p>
-            </div>
-        </div>
-    </section>
-    `;
-};
+//     return `
+//     <section class="col">
+//         <div class="card h-100">
+//             <div class="card-header">
+//              <h1 class="card-title">${internName}</h1>
+//              <h2 class="card-subtitle">Intern</h2>
+//             </div>
+//             <div class="card-body">
+//              <p id="id-number">ID: ${internId}</p>
+//              <p id="email">Email: <a href="mailto:${email}">${internEmail}</a></p>
+//               <p id="school">School: ${school}</p>
+//             </div>
+//         </div>
+//     </section>
+//     `;
+// };
 
 // export function to generate entire page
 module.exports = templateData => {
+    console.log(templateData);
     // destructure page data by section
-    const { engineer, intern, ...main } = templateData;
+    const { managerName, managerId, managerEmail, office, engineerName, engineerId, engineerEmail, github, internName, internId, internEmail, school, } = templateData;
 
     return `
     <!DOCTYPE html> 
@@ -71,18 +72,17 @@ module.exports = templateData => {
             <section class="col">
                 <div class="card h-100">
                     <div class="card-header">
-                        <h1 class="card-title">${manager_name}</h1>
+                        <h1 class="card-title">${managerName}</h1>
                         <h2 class="card-subtitle">Manager</h2>
                     </div>  
                     <div class="card-body">
-                        <p id="id-number">ID: ${id}</p>
-                        <p id="email">Email: <a href="mailto:${email}">${email}</a></p>
+                        <p id="id-number">ID: ${managerId}</p>
+                        <p id="email">Email: <a href="mailto:${managerEmail}">${managerEmail}</a></p>
                         <p id="office-number">Office Number: ${office}</p>
                     </div>
                 </div>
             </section>
-                ${generateEngineer(engineer)}
-                ${generateIntern(intern)}
+
         </main>
     </body>
     </html>
