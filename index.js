@@ -1,3 +1,3 @@
 const Employee = require('./lib/Employee')
 
-new Employee().promptUser();
+new Employee().getName();
