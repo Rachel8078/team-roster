@@ -1,14 +1,13 @@
 // create the engineer card    
 const generateEngineer = employees => {
     // get array of just Engineers
-    // console.log(employees);
-
     let engineers = employees.filter(function(e) {
         return e.github;
     });
 
-    console.log(engineers);
+    //console.log(engineers);
 
+    // add html for each engineer on team
     const justEngineersArray = engineers.map(({ name, id, email, github }) => {
     return `
     <section class="col">
@@ -26,6 +25,11 @@ const generateEngineer = employees => {
     </section>
     `;
     })
+    if(!justEngineersArray) {
+        return '';
+    } else {
+    return justEngineersArray;
+    }
 };
 
 // create the intern card    
@@ -35,7 +39,7 @@ const generateIntern = employees => {
         return e.school;
     });
 
-    console.log(interns);
+    //console.log(interns);
 
     const justInternsArray = interns.map(({ name, id, email, school }) => {
     return `
@@ -54,6 +58,11 @@ const generateIntern = employees => {
     </section>
     `;
     });
+    if(!justInternsArray) {
+        return '';
+    } else {
+    return justInternsArray;
+    }
 };
 
 // export function to generate entire page
