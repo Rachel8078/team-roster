@@ -72,7 +72,8 @@ const promptManager = () => {
             //console.log(manager)
             const managerInfo = new Manager(manager.name, manager.id, manager.email, manager.office)
             // push manager to a global array
-            employees.push(manager);
+            //console.log(managerInfo)
+            employees.push(managerInfo);
             //console.log(employees);
             promptAnother()
         }
@@ -139,10 +140,9 @@ const promptEngineer = () => {
             },
         ])
             .then((engineer) => {
-                console.log(engineer)
-                const engineerInfo = new Engineer(engineer.name, engineer.id, engineer.email, engineer.office)
+                const engineerInfo = new Engineer(engineer.name, engineer.id, engineer.email, engineer.github)
                 // push engineer to a global array
-                employees.push(engineer);
+                employees.push(engineerInfo);
                 //console.log(employees);
                 promptAnother()
             }
@@ -210,11 +210,9 @@ const promptIntern = () => {
             },
         ])
             .then((intern) => {
-                console.log(intern)
-                const internInfo = new Intern(intern.name, intern.id, intern.email, intern.office)
+                const internInfo = new Intern(intern.name, intern.id, intern.email, intern.school)
                 // push manager to a global array
-                employees.push(intern);
-                // console.log(employees);
+                employees.push(internInfo);
                 promptAnother()
             }
             )

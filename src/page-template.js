@@ -1,34 +1,43 @@
 // create the engineer card    
 const generateEngineer = employees => {
-    // if no engineer return nothing
-    if (!engineerInfo) {
-        return '';
-    }
+    // get array of just Engineers
+    // console.log(employees);
 
-    // if YES engineer, include info:
+    let engineers = employees.filter(function(e) {
+        return e.github;
+    });
+
+    console.log(engineers);
+
+    const justEngineersArray = engineers.map(({ name, id, email, github }) => {
     return `
     <section class="col">
         <div class="card h-100">
          <div class="card-header">
-            <h1 class="card-title">${employee[0].name}</h1>
+            <h1 class="card-title">${name}</h1>
             <h2 class="card-subtitle">Engineer</h2>
          </div>  
          <div class="card-body">
-            <p id="id-number">ID: ${employeeId}</p>
+            <p id="id-number">ID: ${id}</p>
             <p id="email">Email: <a href="mailto:${email}">${email}</a></p>
             <p id="github">Github: <a href="https://github.com/${github}">${github}</a></p>
          </div>
         </div>
     </section>
     `;
+    })
 };
 
-// create an intern card
-const generateIntern = internInfo => {
-    if (!internInfo) {
-        return '';
-    }
+// create the intern card    
+const generateIntern = employees => {
+    // get array of just Interns
+    let interns = employees.filter(function(e) {
+        return e.school;
+    });
 
+    console.log(interns);
+
+    const justInternsArray = interns.map(({ name, id, email, school }) => {
     return `
     <section class="col">
         <div class="card h-100">
@@ -37,20 +46,19 @@ const generateIntern = internInfo => {
              <h2 class="card-subtitle">Intern</h2>
             </div>
             <div class="card-body">
-             <p id="id-number">ID: ${employeeId}</p>
+             <p id="id-number">ID: ${id}</p>
              <p id="email">Email: <a href="mailto:${email}">${email}</a></p>
               <p id="school">School: ${school}</p>
             </div>
         </div>
     </section>
     `;
+    });
 };
 
 // export function to generate entire page
 // employees is an array of employees info generated in inquirer
 const generateTeamRoster = employees => {
-    console.log(employees);
-
     // destructure page data by section
     const { name, id, email, office, github, school } = employees
 
@@ -84,7 +92,8 @@ const generateTeamRoster = employees => {
                     </div>
                 </div>
             </section>
-
+            ${generateEngineer(employees)}
+            ${generateIntern(employees)}
             </main>
     </body>
     </html>
