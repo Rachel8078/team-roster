@@ -5,9 +5,7 @@ const generateEngineer = employees => {
         return e.github;
     });
 
-    //console.log(engineers);
-
-    // add html for each engineer on team
+    // add html/card for all engineers on team
     const justEngineersArray = engineers.map(({ name, id, email, github }) => {
     return `
     <section class="col">
@@ -19,16 +17,17 @@ const generateEngineer = employees => {
          <div class="card-body">
             <p id="id-number">ID: ${id}</p>
             <p id="email">Email: <a href="mailto:${email}">${email}</a></p>
-            <p id="github">Github: <a href="https://github.com/${github}">${github}</a></p>
+            <p id="github">Github: <a href="https://github.com/${github}" target="_blank">${github}</a></p>
          </div>
         </div>
     </section>
     `;
     })
+    
     if(!justEngineersArray) {
         return '';
     } else {
-    return justEngineersArray;
+    return justEngineersArray.join('');
     }
 };
 
@@ -39,8 +38,7 @@ const generateIntern = employees => {
         return e.school;
     });
 
-    //console.log(interns);
-
+    // create html/card for each intern
     const justInternsArray = interns.map(({ name, id, email, school }) => {
     return `
     <section class="col">
@@ -58,15 +56,15 @@ const generateIntern = employees => {
     </section>
     `;
     });
+
     if(!justInternsArray) {
         return '';
     } else {
-    return justInternsArray;
+    return justInternsArray.join('');
     }
 };
 
 // export function to generate entire page
-// employees is an array of employees info generated in inquirer
 const generateTeamRoster = employees => {
     // destructure page data by section
     const { name, id, email, office, github, school } = employees

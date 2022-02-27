@@ -1,5 +1,5 @@
 header {
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(212, 59, 20);
     text-align: center;
     color: rgb(255, 255, 255);
     padding: 15px;
@@ -8,7 +8,7 @@ header {
 }
 
 .card-header {
-    background-color: rgb(21, 21, 231);
+    background-color: rgb(53, 19, 177);
     color: rgb(255, 255, 255);
     text-align: center;
 }
@@ -17,9 +17,12 @@ header {
 
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
+        border-radius: 5%;
+
 }
 
 .row {
     margin-left: 15px;
     margin-right: 15px;
+
 }
