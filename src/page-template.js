@@ -1,56 +1,58 @@
-// // create the engineer card    
-// const generateEngineer = engineerInfo => {
-//     // if no engineer return nothing
-//     if (!engineerInfo) {
-//         return '';
-//     }
+// create the engineer card    
+const generateEngineer = employees => {
+    // if no engineer return nothing
+    if (!engineerInfo) {
+        return '';
+    }
 
-//     // if YES engineer, include info:
-//     return `
-//     <section class="col">
-//         <div class="card h-100">
-//          <div class="card-header">
-//             <h1 class="card-title">${engineerName}</h1>
-//             <h2 class="card-subtitle">Engineer</h2>
-//          </div>  
-//          <div class="card-body">
-//             <p id="id-number">ID: ${engineerId}</p>
-//             <p id="email">Email: <a href="mailto:${email}">${engineerEmail}</a></p>
-//             <p id="github">Github: <a href="https://github.com/${github}">${github}</a></p>
-//          </div>
-//         </div>
-//     </section>
-//     `;
-// };
+    // if YES engineer, include info:
+    return `
+    <section class="col">
+        <div class="card h-100">
+         <div class="card-header">
+            <h1 class="card-title">${employee[0].name}</h1>
+            <h2 class="card-subtitle">Engineer</h2>
+         </div>  
+         <div class="card-body">
+            <p id="id-number">ID: ${employeeId}</p>
+            <p id="email">Email: <a href="mailto:${email}">${email}</a></p>
+            <p id="github">Github: <a href="https://github.com/${github}">${github}</a></p>
+         </div>
+        </div>
+    </section>
+    `;
+};
 
-// // create an intern card
-// const generateIntern = internInfo => {
-//     if (!internInfo) {
-//         return '';
-//     }
+// create an intern card
+const generateIntern = internInfo => {
+    if (!internInfo) {
+        return '';
+    }
 
-//     return `
-//     <section class="col">
-//         <div class="card h-100">
-//             <div class="card-header">
-//              <h1 class="card-title">${internName}</h1>
-//              <h2 class="card-subtitle">Intern</h2>
-//             </div>
-//             <div class="card-body">
-//              <p id="id-number">ID: ${internId}</p>
-//              <p id="email">Email: <a href="mailto:${email}">${internEmail}</a></p>
-//               <p id="school">School: ${school}</p>
-//             </div>
-//         </div>
-//     </section>
-//     `;
-// };
+    return `
+    <section class="col">
+        <div class="card h-100">
+            <div class="card-header">
+             <h1 class="card-title">${name}</h1>
+             <h2 class="card-subtitle">Intern</h2>
+            </div>
+            <div class="card-body">
+             <p id="id-number">ID: ${employeeId}</p>
+             <p id="email">Email: <a href="mailto:${email}">${email}</a></p>
+              <p id="school">School: ${school}</p>
+            </div>
+        </div>
+    </section>
+    `;
+};
 
 // export function to generate entire page
-module.exports = templateData => {
-    console.log(templateData);
+// employees is an array of employees info generated in inquirer
+const generateTeamRoster = employees => {
+    console.log(employees);
+
     // destructure page data by section
-    const { managerName, managerId, managerEmail, office, engineerName, engineerId, engineerEmail, github, internName, internId, internEmail, school } = templateData
+    const { name, id, email, office, github, school } = employees
 
     return `
     <!DOCTYPE html> 
@@ -72,19 +74,21 @@ module.exports = templateData => {
             <section class="col">
                 <div class="card h-100">
                     <div class="card-header">
-                        <h1 class="card-title">${managerName}</h1>
+                        <h1 class="card-title">${employees[0].name}</h1>
                         <h2 class="card-subtitle">Manager</h2>
                     </div>  
                     <div class="card-body">
-                        <p id="id-number">ID: ${managerId}</p>
-                        <p id="email">Email: <a href="mailto:${managerEmail}">${managerEmail}</a></p>
-                        <p id="office-number">Office Number: ${office}</p>
+                        <p id="id-number">ID: ${employees[0].id}</p>
+                        <p id="email">Email: <a href="mailto:${employees[0].email}">${employees[0].email}</a></p>
+                        <p id="office-number">Office Number: ${employees[0].office}</p>
                     </div>
                 </div>
             </section>
 
-        </main>
+            </main>
     </body>
     </html>
     `;
 };
+
+module.exports = generateTeamRoster;
